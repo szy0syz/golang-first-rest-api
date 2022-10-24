@@ -33,3 +33,29 @@ go get github.com/kelseyhightower/envconfig
   - 毕竟Api服务，肯定需要验证传递的参数
 - `envconfig`
   - 和我们node.js一样，管理配置环境变量的
+
+## Config
+
+> 先搞定配置问题
+
+```bash
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_USER=postgres
+DATABASE_PASSWORD=password
+DATABASE_NAME=rest
+SERVER_PORT=80
+```
+
+```go
+func NewParsedConfig() (Config, error) {
+  // 载入环境变量，是否是还应该考虑开发环境和生产环境 🤔🤔
+	_ = godotenv.Load(".env")
+  // 初始化个空的Config结构体，对了，golang是个强类型，怕不能搞个空对象
+	cnf := Config{}
+  // 向进程注入环境变量
+	err := envconfig.Process("", &cnf)
+  // 得熟悉这样golang风格的返回
+	return cnf, err
+}
+```
