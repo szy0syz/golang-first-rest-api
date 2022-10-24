@@ -38,14 +38,7 @@ go get github.com/kelseyhightower/envconfig
 
 > 先搞定配置问题
 
-```bash
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_USER=postgres
-DATABASE_PASSWORD=password
-DATABASE_NAME=rest
-SERVER_PORT=80
-```
+> `.env`
 
 ```go
 func NewParsedConfig() (Config, error) {
