@@ -52,3 +52,9 @@ func NewParsedConfig() (Config, error) {
 	return cnf, err
 }
 ```
+
+## Database migration
+
+```bash
+migrate create -ext sql -dir migrations -seq create_todo_table
+```
